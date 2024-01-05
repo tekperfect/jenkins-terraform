@@ -1,0 +1,5 @@
+# Ignore PEM files
+*.pem
+
+# Ignore Ignore files with autodepoy name
+autodeploy*

@@ -27,7 +27,6 @@ variable "instance_type" {
    type        = string
    description = "Instance type"
    default     = "t2.micro"
-   key_name    = "2023-devops.pem"
 }
 
 variable "name_tag" {

@@ -1,20 +1,42 @@
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow-ssh"
-  description = "Allow SSH access from specific IP addresses"
+resource "aws_security_group" "my_sg" {
+       name        = "my_sg"
+       description = "Some description"
+       vpc_id      = "${aws_vpc.my_vpc.id}"
+       tags {
+         Name = "my_sg_tag"
+       }
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    
-    # Replace the following with your specific allowed IP addresses
-    cidr_blocks = ["73.116.216.200", "76.102.161.122", "98.45.139.47"]
-  }
+       #Not redundant - Inbound Access
+       ingress {
+         from_port   = "22"
+         to_port     = "22"
+         protocol    = "TCP"
+         cidr_blocks = ["73.116.216.200"/32","76.102.161.122,"98.45.139.47"]
+       }
 
-  # Add any additional rules or configurations here
+       # Outbound Access    
+       egress {
+         from_port   = 0
+         to_port     = 0
+         protocol    = "-1"
+         cidr_blocks = ["0.0.0.0/0"]
+       }
 }
 
-output "security_group_id" {
-  value = aws_security_group.allow_ssh.id
-}
+
+
+
+
+GD
+T
+16 external people are from 15 organizations
+
+
+
+
+
+
+
+
+
 

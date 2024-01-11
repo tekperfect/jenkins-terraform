@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-east-1"  # Replace with your desired AWS region
-}
-
 resource "aws_security_group" "allow_ssh" {
   name        = "allow-ssh"
   description = "Allow SSH access from specific IP addresses"

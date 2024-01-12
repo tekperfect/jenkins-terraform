@@ -7,7 +7,7 @@ variable "allowed_ip" {
 resource "aws_security_group" "my_sg" {
   name        = "secure_ssh"
   description = "Your description here"
-  vpc_id      = vpc-02ef769587dd081cf
+  vpc_id      = aws_vpc.vpc-02ef769587dd081cf.id
 
   tags = {
     Name = "secure_ssh"

@@ -1,4 +1,4 @@
-resource "aws_security_group" "secure_ssh" {
+resource "sg-0514a63dffef6e5fe" "secure_ssh" {
        name        = "secure ssh"
        description = "allow ssh from my home ip"
        vpc_id      = "${vpc-02ef769587dd081cf }"

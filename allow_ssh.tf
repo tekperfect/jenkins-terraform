@@ -1,5 +1,5 @@
-resource "aws_security_group" "my_sg" {
-       name        = "my_sg"
+resource "aws_security_group" "Super_Admin" {
+       name        = "Super_Admin"
        description = "Some description"
        vpc_id      = "${aws_vpc.my_vpc.id}"
        tags {

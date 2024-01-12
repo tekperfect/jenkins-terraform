@@ -1,7 +1,7 @@
 resource "aws_security_group" "secure_ssh" {
        name        = "secure ssh"
        description = "allow ssh from my home ip"
-       vpc_id      = "${aws_vpc.vpc-02ef769587dd081cf }"
+       vpc_id      = "${vpc-02ef769587dd081cf }"
        tags {
          Name = "my_sg_tag"
        }

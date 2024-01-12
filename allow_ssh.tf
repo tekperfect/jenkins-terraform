@@ -7,7 +7,7 @@ variable "allowed_ip" {
 resource "aws_security_group" "my_sg" {
   name        = "my_sg"
   description = "Your description here"
-  vpc_id      = vpc-02ef769587dd081cf   # Replace with your VPC resource name or ID
+  vpc_id      = vpc-02ef769587dd081cf
 
   tags = {
     Name = "my_sg_tag"

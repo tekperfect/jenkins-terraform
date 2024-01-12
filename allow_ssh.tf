@@ -5,12 +5,12 @@ variable "allowed_ip" {
 }
 
 resource "aws_security_group" "my_sg" {
-  name        = "my_sg"
+  name        = "secure_ssh"
   description = "Your description here"
   vpc_id      = vpc-02ef769587dd081cf
 
   tags = {
-    Name = "my_sg_tag"
+    Name = "secure_ssh"
   }
 
   # Inbound Access

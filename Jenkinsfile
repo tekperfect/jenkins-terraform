@@ -4,6 +4,7 @@ pipeline {
     parameters {
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
         choice(name: 'action', choices: ['apply', 'destroy'], description: 'Select the action to perform')
+        string(name: 'branch', defaultValue: 'staging', description: 'Git branch to checkout')
     }
 
     environment {
@@ -15,7 +16,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'dev', url: 'https://github.com/roddybo/jenkins_cicd.git'
+                git branch: params.branch, url: 'https://github.com/roddybo/jenkins_cicd.git'
             }
         }
         stage('Terraform init') {
@@ -36,18 +37,17 @@ pipeline {
                         if (!params.autoApprove) {
                             def plan = readFile 'tfplan.txt'
                             input message: "Do you want to apply the plan?",
-                            parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
+                                  parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                         }
 
-                        sh 'terraform ${action} -input=false tfplan'
+                        sh "terraform ${params.action} -input=false tfplan"
                     } else if (params.action == 'destroy') {
-                        sh 'terraform ${action} --auto-approve'
+                        sh "terraform ${params.action} --auto-approve"
                     } else {
                         error "Invalid action selected. Please choose either 'apply' or 'destroy'."
                     }
                 }
             }
         }
-
     }
 }

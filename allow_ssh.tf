@@ -4,7 +4,7 @@ variable "allowed_ip" {
   default = "73.116.216.200"
 }
 
-resource "aws_security_group" "my_sg" {
+resource "aws_vpc" "vpc-02ef769587dd081cf" {
   name        = "secure_ssh"
   description = "Your description here"
   vpc_id      = aws_vpc.vpc-02ef769587dd081cf.id
